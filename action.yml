@@ -3,8 +3,8 @@ description: 'Oryx Build'
 inputs:
   app-location:  # id of input
     description: 'Directory location of the application source code'
-    required: true
-    default: ""
+    required: false
+    
 runs:
   using: 'docker'
   image: 'Dockerfile'
