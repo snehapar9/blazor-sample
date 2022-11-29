@@ -1,9 +1,5 @@
 name: 'Oryx Build'
 description: 'Oryx Build'
-inputs:
-  app-location:  # id of input
-    description: 'Directory location of the application source code'
-    required: false
     
 runs:
   using: 'docker'
