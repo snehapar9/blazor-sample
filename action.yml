@@ -4,7 +4,7 @@ inputs:
   app-location:  # id of input
     description: 'Directory location of the application source code'
     required: true
-    default: 'Client'
+    default: ""
 runs:
   using: 'docker'
   image: 'Dockerfile'
