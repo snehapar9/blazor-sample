@@ -14,4 +14,4 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: oryx-build
         with:
-          app-location: "Client"
+          app-location: 'Client'
