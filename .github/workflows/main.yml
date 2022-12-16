@@ -13,9 +13,7 @@ jobs:
       - name: Log into registry
         uses: azure/login@v1
         with:
-         registry: jamstacktest.azurecr.io
-         username: ${{ secrets.AZURE_CLIENT_ID }}  
-         password: ${{ secrets.AZURE_CLIENT_SECRET }}
+         creds: '${{ secrets.AZURE_CREDENTIALS }}'
       - name: Oryx build step
         uses: ./ # Uses an action in the root directory
         id: oryx-build
