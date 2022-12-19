@@ -4,7 +4,7 @@ on:
 jobs:
   oryx_build_job:
     runs-on: ubuntu-latest
-    name: A job to run Oryx build
+    name: Oryx build
     steps:
       # To use this repository's private action,
       # you must check out the repository
@@ -29,6 +29,7 @@ jobs:
           app-location: "Client"
   Deploy-preview-Vercel:
     runs-on: ubuntu-latest
+    name: Deploy to Vercel
     steps:   
       - name: Install vercel CLI
         run: npm install --global vercel@latest
@@ -38,3 +39,19 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}   
+  Deploy-Netlify:
+    runs-on: ubuntu-latest
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './dist'
+          production-branch: master
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
+          enable-pull-request-comment: false
+          enable-commit-comment: true
+          overwrites-pull-request-comment: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        timeout-minutes: 1
