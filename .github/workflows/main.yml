@@ -27,7 +27,7 @@ jobs:
         id: oryx-build
         with:
           app-location: "Client"
-  Deploy-preview:
+  Deploy-preview-Vercel:
     runs-on: ubuntu-latest
     steps:   
       - name: Install vercel CLI
@@ -38,3 +38,12 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}   
+  Build-and-publish-on-Netlify:
+      - name: Publish
+      uses: netlify/actions/build@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        NETLIFY_BASE: site
+        NETLIFY_CMD: npm build
+        NETLIFY_DIR: site/_build 
