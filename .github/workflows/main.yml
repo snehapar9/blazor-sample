@@ -41,6 +41,8 @@ jobs:
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}   
   Deploy-Netlify:
     runs-on: ubuntu-latest
+    name : Deploy to Netlify
+    steps:
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
